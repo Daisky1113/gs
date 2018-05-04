@@ -1,0 +1,22 @@
+#contents {
+  display: flex;
+}
+
+.l-left {
+  width: 50%;
+}
+
+.l-right {
+  width: 50%;
+}
+
+#js-listController {}
+
+#js-listController ul {
+  display: flex;
+  cursor: pointer;
+}
+
+#js-listController ul li {
+  list-style-type: none;
+}

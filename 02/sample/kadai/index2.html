@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>my Memo's Pad</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<style>
+li{text-align: center;}
+.tab{overflow:hidden;}
+.tab li{background:#ccc; padding:5px 25px; float:left; margin-right:1px;}
+.tab li.select{background:#eee;}
+.content li{background:#eee; padding:20px;}
+.hide {display:none;}
+</style>
+</head>
+
+<body>
+
+    <header>
+        <h1>MemoPad</h1>
+    </header>
+
+    <main>
+        <ul class="tab">
+            <li class="select">タブ1</li>
+            <li>タブ2</li>
+            <li>タブ3</li>
+            <li>タブ4</li>
+        </ul>
+        <ul class="content">
+            <li><textarea id="memo1" cols="30" rows="10"></textarea></li>
+            <li class="hide"><textarea id="memo2" cols="30" rows="10"></textarea></li>
+            <li class="hide"><textarea id="memo3" cols="30" rows="10"></textarea></li>
+            <li class="hide"><textarea id="memo4" cols="30" rows="10"></textarea></li>
+        </ul>
+        <ul>
+            <li id="save">Save</li>
+        </ul>
+    </main>
+
+<footer><small>G's</small></footer>
+<script>
+$(function() {
+    //参考URL:http://blog.three-co.jp/web/558/
+    //クリックしたときのファンクションをまとめて指定
+    $('.tab li').click(function() {
+        //.index()を使いクリックされたタブが何番目かを調べ、
+        //indexという変数に代入します。
+        var index = $('.tab li').index(this);
+        //コンテンツを一度すべて非表示にし、
+        $('.content li').css('display','none');
+        //クリックされたタブと同じ順番のコンテンツを表示します。
+        $('.content li').eq(index).css('display','block');
+        //一度タブについているクラスselectを消し、
+        $('.tab li').removeClass('select');
+        //クリックされたタブのみにクラスselectをつけます。
+        $(this).addClass('select');
+    });
+});
+
+
+//1.Save クリックイベント
+
+
+
+
+//2.ロード時に表示(for文)
+
+
+
+
+
+</script>
+</body>
+
+</html>
