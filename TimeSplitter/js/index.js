@@ -26,6 +26,55 @@
   // Dateクラスのインスタンスであれば計算が簡単
   // ということは締め切りの時間を設定するときに新たにdateクラスのインスタンスを生成すればよい
 
+  class TImeController{
+    constructor(props){
+      this.now = new Date()
+      setInterval(function(){
+        this.now = new Date()
+        console.log(this.now)
+      },1000)
+    }
+
+    calculatTimediff(date1,date2){
+      return date1 - date2
+    }
+
+    dateShaping(millisecond) {
+      let milli = ~~(millisecond / 1000)
+      let day, hour, minute, seconds
+      let result = ''
+
+      while (!seconds) {
+        if (milli > (60 * 60 * 24)) {
+          day = ~~(milli / (60 * 60 * 24))
+          result += day + '日'
+          milli -= (day * (60 * 60 * 24))
+        } else if (milli > (60 * 60)) {
+          hour = ~~(milli / (60 * 60))
+          result += hour + '時'
+          milli -= (hour * 60 * 60)
+        } else if (milli > 60) {
+          minute = ~~(milli / 60)
+          result += minute + '分'
+          milli -= minute * 60
+        } else {
+          seconds = ~~(milli)
+          result += milli + '秒'
+        }
+      }
+      return result;
+    }
+
+    date2string(date){
+      let year,month,day,hour,minute,seconds  
+      year = date.getFullYear()
+      month = (date.getMonth() + 1) % 12
+      day = date.getDate()
+      hour = date.getHours()
+      minute = date.getMinutes()
+      return (`${year}:${month}:${day} ${hour}:${minute}`)
+    }
+  }
 
   document.addEventListener('DOMContentLoaded', () => {
     const datePicker = document.getElementById('js-datePicker')
@@ -36,25 +85,7 @@
     const calcBtn = document.getElementById('js-calcBtn')
     const showBtn = document.getElementById('js-showBtn')
 
-    let nowTime, setTime
 
-    fixBtn.addEventListener('click', () => {
-      let date = datePicker.value
-      let time = timePicker.value
-      setTime = new Date(date + ' ' + time)
-    })
-    nowBtn.addEventListener('click', () => {
-      nowTime = new Date()
-    })
-    calcBtn.addEventListener('click', () => {
-      //計算すると秒で帰ってくる
-      let diff = setTime - nowTime
-      dateShaping(diff)
-    })
-
-    showBtn.addEventListener('click', () => {
-      console.log(`${setTime}\n${nowTime}`)
-    })
 
     // ミリ秒を日/時/分/秒に整形する
     function dateShaping(millisecond) {
@@ -174,5 +205,6 @@
       // console.log(posX, posY)
       ctx.fillText(el, posX, posY)
     })
+    const tc = new TImeController() 
   })
 })()
