@@ -1,3 +1,113 @@
+@charset "utf-8";
+/*--------------------------------------------------
+/  base
+/--------------------------------------------------*/
+html, body, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+
+}
+input, button, textarea, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-style : groove;
+  font-family: 'Marcellus', serif;
+  font-size: 20px;
+}
+
+body {
+  position: relative;
+}
+
+a{
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+ol, ul, li {
+  list-style: none;
+}
+
+/*--------------------------------------------------
+/  typo
+/--------------------------------------------------*/
+body {
+   font-feature-settings : "palt";
+   line-height: 1.75;
+   font-family: 'Marcellus', serif;
+   font-size: 20px;
+}
+
+h1 {
+ font-size: 3rem;
+}
+
+h2 {
+ font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+h5 {
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 1rem;  
+}
+
+
+/*--------------------------------------------------
+/  state
+/--------------------------------------------------*/
+
+.is-active {
+  display: block !important;
+  animation-timing-function: ease-out;
+  animation: show .8s  0s;
+
+}
+.is-hide {
+  animation-timing-function: ease-out;
+  animation: hide .8s  0s;
+  display: none !important;
+}
+.is-flex {
+  display: flex;
+  animation-timing-function: ease-out;
+  animation: show .4s  0s;
+}
+
+@keyframes show{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
+
 #contents {
   display: flex;
 }
@@ -19,4 +129,43 @@
 
 #js-listController ul li {
   list-style-type: none;
+}
+/*--------------------------------------------------
+/  modules
+/--------------------------------------------------*/
+button {
+  border-radius: 3px;
+}
+
+/*--------------------------------------------------
+/  component
+/--------------------------------------------------*/
+.List-Controller{
+
+}
+.task-list{
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 8px;
+}
+.task-header{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.task-header .task-name{
+  width: 60%;
+}
+
+.task-header .task-time{
+  width: 40%;
+  text-align: right;
+}
+.task-time-limit{
+  font-size: 14px;
+  text-align: right;
+}
+
+.ListController .task-List .btns{
+display: flex;
 }

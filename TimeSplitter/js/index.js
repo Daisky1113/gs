@@ -35,7 +35,6 @@
     const nowBtn = document.getElementById('js-getNowBtn')
     const calcBtn = document.getElementById('js-calcBtn')
     const showBtn = document.getElementById('js-showBtn')
-    const addTaskBtn = document.getElementById('js-addTaskBtn')
 
     let nowTime, setTime
 
@@ -55,12 +54,6 @@
 
     showBtn.addEventListener('click', () => {
       console.log(`${setTime}\n${nowTime}`)
-    })
-    addTaskBtn.addEventListener('click',()=>{
-      let taskName = taskNameinput.value
-      let limit = setTime
-
-      console.log(taskName,date2string(limit))
     })
 
     // ミリ秒を日/時/分/秒に整形する
@@ -87,7 +80,7 @@
           result += milli + '秒'
         }
       }
-      console.log(result)
+      return result;
     }
 
     function date2string(date){
@@ -99,8 +92,56 @@
       minute = date.getMinutes()
       return (`${year}年${month}月${day}日${hour}時${minute}分`)
     }
+
     // タスクリスト
-    
+    const taskController = document.getElementById('js-listController')
+    const addTaskBtn = document.getElementById('js-addTask')
+    const taskList = document.getElementById('js-taskList')
+    addTaskBtn.addEventListener('click',()=>{
+      console.log('addTask')
+    })
+
+    addTaskBtn.addEventListener('click',()=>{
+      const setTime = new Date(datePicker.value + ' ' + timePicker.value)
+      const now = new Date()
+      console.log(setTime - now)
+      createParentTask(
+        taskNameinput.value,
+        {
+          limit: date2string(setTime),
+          remainingTime : dateShaping(setTime - now)
+        }
+      )
+    })
+
+
+    function createParentTask(taskName,timeObj){
+      const taskList = document.getElementById('js-listArea')
+      let parentTask = document.createElement('div')
+      parentTask.className = 'js-taskList task-list'
+      const taskTemplate = `
+      <div class="parent-task">
+      <div class='task-header'>
+        <div class='task-name'>${taskName}</div>
+        <div class='task-time'>
+          <div class='task-time-limit'>${timeObj.limit}</div>
+          <div class='task-time-past'>${timeObj.remainingTime}</div>
+        </div>
+      </div>
+      <div class='task-btns'>
+        <button>Stop!</button>
+        <button>start!</button>
+        <button>resch!</button>
+        <button>done!</button>
+        <button>split!</button>
+        <button>+show child task</button>
+      </div>
+      </div>`
+      parentTask.insertAdjacentHTML('afterbegin',taskTemplate)
+      taskList.appendChild(parentTask)
+    }
+
+
 
     // canvas
     const canvas = document.getElementById('canvas')
