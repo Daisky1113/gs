@@ -22,12 +22,14 @@
     </div>
     <div id="contents">
       <div class="l-left">
+          <input type='text' id="js-taskNameInput">
         <input id="js-datePicker" type="date">
         <input id="js-timePicker" type="time">
         <button id="js-dateBtn">fix!</button>
         <button id="js-getNowBtn">now!</button>
         <button id="js-calcBtn">calc!</button>
         <button id="js-showBtn">show!</button>
+        <button id="js-addTaskBtn">addTask!</button>
         <canvas id="canvas"></canvas>
       </div>
       <div class="l-right">
@@ -39,8 +41,14 @@
         </div>
         <div id="js-listArea">
           <div class="js-taskList">
-
             <p>タスク名</p>
+            <ul class='btns'>
+              <li><button>stop!</button></li>
+              <li><button>start!</button></li>
+              <li><button>done!</button></li>
+              <li><button>resche</button></li>
+              <li><button>split!</button></li>
+            </ul>
           </div>
         </div>
       </div>

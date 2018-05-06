@@ -30,10 +30,12 @@
   document.addEventListener('DOMContentLoaded', () => {
     const datePicker = document.getElementById('js-datePicker')
     const timePicker = document.getElementById('js-timePicker')
+    const taskNameinput = document.getElementById('js-taskNameInput')
     const fixBtn = document.getElementById('js-dateBtn')
     const nowBtn = document.getElementById('js-getNowBtn')
     const calcBtn = document.getElementById('js-calcBtn')
     const showBtn = document.getElementById('js-showBtn')
+    const addTaskBtn = document.getElementById('js-addTaskBtn')
 
     let nowTime, setTime
 
@@ -53,6 +55,12 @@
 
     showBtn.addEventListener('click', () => {
       console.log(`${setTime}\n${nowTime}`)
+    })
+    addTaskBtn.addEventListener('click',()=>{
+      let taskName = taskNameinput.value
+      let limit = setTime
+
+      console.log(taskName,date2string(limit))
     })
 
     // ミリ秒を日/時/分/秒に整形する
@@ -77,11 +85,22 @@
         } else {
           seconds = ~~(milli)
           result += milli + '秒'
-          break;
         }
       }
       console.log(result)
     }
+
+    function date2string(date){
+      let year,month,day,hour,minute,seconds  
+      year = date.getFullYear()
+      month = (date.getMonth() + 1) % 12
+      day = date.getDate()
+      hour = date.getHours()
+      minute = date.getMinutes()
+      return (`${year}年${month}月${day}日${hour}時${minute}分`)
+    }
+    // タスクリスト
+    
 
     // canvas
     const canvas = document.getElementById('canvas')
