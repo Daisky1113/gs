@@ -7,7 +7,9 @@
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Marcellus" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>  
   <script src="js/index.js"></script>
 </head>
 
@@ -18,46 +20,78 @@
         <h1 class="s-title">Time Splitter</h1>
         <img src="" alt="" class="s-logo">
       </div>
-      <div id="js-configBtn" class="l-btn">#</div>
     </div>
     <div id="contents">
       <div class="l-left">
-          <input type='text' id="js-taskNameInput">
-        <input id="js-datePicker" type="date">
-        <input id="js-timePicker" type="time">
-        <button id="js-dateBtn">fix!</button>
-        <button id="js-getNowBtn">now!</button>
-        <button id="js-calcBtn">calc!</button>
-        <button id="js-showBtn">show!</button>
-        <button id="js-addTaskBtn">addTask!</button>
-        <canvas id="canvas"></canvas>
+          <div id="js-task-registar" class='input-area'>
+              <div class='input-header'>
+                  <p>Task Registration</p>
+              </div>
+              <div class='input-body'>
+                  <label for=''>Date</label><input id="js-date" type='text' class="datepicker" >
+                  <label for=''>Time:<input type='text' id="js-time" class="timepicker" >
+                    <label for=''>TaskName:<input id="js-nameInput" type='text' >
+              </div>
+              <div class='input-footer'>
+                  <a class="js-cancelBtn waves-effect waves-light red lighten-1 btn">Cancel</a>
+                  <a class="js-addBtn waves-effect waves-light btn">Add </a>
+          </div>
+            </div>    
+    
       </div>
       <div class="l-right">
-        <div id="js-listController" class="List-Controller">
-          <ul>
-            <button id="js-addTask">Add Task!</button>
-          </ul>
-        </div>
-        <div id="js-listArea" class="List-Area">
-          <div class="js-taskList task-list">
-            <div class='parent-task'>
-              <div class='task-header'>
-                <div class='task-name'>テストタスクあれをこれしてそれをどれする</div>
-                <div class='task-time'>
-                  <div class='task-time-limit'>2018年5月8日19時00分</div>
-                  <div class='task-time-past'>10時間30分</div>
+        <ul class='task-tab' id='js-tab-header'>
+          <li class="js-taskTab">All Your Taks</li>
+          <li class="js-taskTab">Today's summary</li>
+          <li class="js-taskTab">Archive</li>
+        </ul>
+        <div class='js-tab-contents'>
+          <!-- task -->
+          <div id="js-listArea" class="List-Area">
+              <div class="js-taskList task-list">
+                <div class='parent-task'>
+                  <div class='l-task-left'>
+                      <div class='task-name'>テストタスクあれをこれしてそれをどれする</div>
+                      <div class='task-btns'>
+                          <a class="waves-effect waves-light btn-small btn-flat teal lighten-5">DONE !</a>
+                        <a class="waves-effect waves-light btn-small btn-flat teal lighten-5">RESCHE</a>
+                        <a class="waves-effect waves-light btn-small btn-flat teal lighten-5">SPLIT</a>
+                        <a class="waves-effect waves-light btn-small  btn-flat red lighten-5">cancel</a>
+                      </div>    
+                  </div>
+                  <div class='l-task-right'>
+                      <div class='task-time'>
+                          <div class='task-time-limit'><span>Time limit</span> 2018/5/8 19:00</div>
+                          <div class='task-time-past'><span>Remaining Time
+                            </span>  10:30</div>
+                        </div>    
+                  </div>
+                </div>
+                <div class='child-task'>
+                    <div class='l-task-left'>
+                        <div class='task-name'>
+                            <span>テストタスクあれをこれしてそれをどれする's Child</span>
+                            test1
+                          </div>
+                    </div>
+                    <div class='l-task-right'>
+                        <div class='child-task task-time'>
+                          <span>Elapsed Time</span> 10:30</div>
+                        <div class='task-btns'>
+                            <a class="waves-effect waves-light btn-small btn-flat teal lighten-5">start</a>
+                            <a class="waves-effect waves-light btn-small btn-flat red lighten-5">stop</a>      
+                          </div>
+
+                    </div>
                 </div>
               </div>
-              <div class='task-btns'>
-                <button>Stop!</button>
-                <button>start!</button>
-                <button>resch!</button>
-                <button>done!</button>
-                <button>split!</button>
-                <button>+show child task</button>
-              </div>
             </div>
-          </div>
+        </div>
+        <div class='js-tab-contents'>
+          <!-- summary -->
+        </div>
+        <div class='js-tab-contents'>
+          <!-- Archive -->
         </div>
       </div>
     </div>

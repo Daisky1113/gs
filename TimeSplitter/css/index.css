@@ -26,8 +26,6 @@ input, button, textarea, select {
   -moz-appearance: none;
   appearance: none;
   border-style : groove;
-  font-family: 'Marcellus', serif;
-  font-size: 20px;
 }
 
 body {
@@ -42,39 +40,6 @@ a{
 }
 ol, ul, li {
   list-style: none;
-}
-
-/*--------------------------------------------------
-/  typo
-/--------------------------------------------------*/
-body {
-   font-feature-settings : "palt";
-   line-height: 1.75;
-   font-family: 'Marcellus', serif;
-   font-size: 20px;
-}
-
-h1 {
- font-size: 3rem;
-}
-
-h2 {
- font-size: 2.4rem;
-}
-
-h3 {
-  font-size: 2rem;
-}
-
-h4 {
-  font-size: 1.6rem;
-}
-h5 {
-  font-size: 1.2rem;
-}
-
-p {
-  font-size: 1rem;  
 }
 
 
@@ -108,17 +73,7 @@ p {
   }
 }
 
-#contents {
-  display: flex;
-}
 
-.l-left {
-  width: 50%;
-}
-
-.l-right {
-  width: 50%;
-}
 
 #js-listController {}
 
@@ -131,41 +86,172 @@ p {
   list-style-type: none;
 }
 /*--------------------------------------------------
-/  modules
+/  layout
 /--------------------------------------------------*/
-button {
-  border-radius: 3px;
+#app{
+  height: 100vh;
+  padding: 16px 16px 0;
+  overflow: scroll; 
 }
+#contents {
+  display: flex;
+  justify-content: space-between
+}
+
+.l-left{
+  width: 30%;
+}
+.l-right {
+  width: 69%;
+}
+
 
 /*--------------------------------------------------
 /  component
 /--------------------------------------------------*/
+.btn-small {
+  height: 22.4px;
+  line-height: 22.4px;
+  font-size: 13px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  height: auto;
+  line-height: inherit;
+}
+.task-btns .teal{
+  background-color: #ffffff !important;
+  border: 1px solid #009688;
+  color: #009688;
+}
+.task-btns .red{
+  background-color: #ffffff !important;
+  border: 1px solid #f44336;
+  color: #f44336;
+}
 .List-Controller{
 
 }
-.task-list{
-  border: 1px solid #eee;
-  border-radius: 5px;
-  padding: 8px;
-}
-.task-header{
+#header{
   display: flex;
-  justify-content: space-between;
-  position: relative;
 }
-.task-header .task-name{
-  width: 60%;
+.task-tab{
+  display: flex;
 }
-
-.task-header .task-time{
-  width: 40%;
-  text-align: right;
+.task-tab li{
+  border-left: 1px solid #9e9e9e;
+  border-right: 1px solid #9e9e9e;
+  border-top: 1px solid #9e9e9e;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #ffffff;
+  padding: 8px 16px;
+  cursor: pointer;
 }
-.task-time-limit{
-  font-size: 14px;
-  text-align: right;
+.task-tab li:nth-child(1){
+  background-color: #26a69a;
+}
+.List-Area{
+  border-left: 1px solid #9e9e9e;
+  border-right: 1px solid #9e9e9e;
+  border-bottom: 1px solid #9e9e9e;
+  /* border-radius: 5px; */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+}
+.task-list{
+  padding: 16px;
+  background-color: #26a69a;
 }
 
 .ListController .task-List .btns{
-display: flex;
+  display: flex;
+}
+.parent-task{
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: #ffffff;
+}
+.parent-task .task-time span{
+  font-size: 12px;
+  padding-right: 8px;
+  color: #999;
+}
+.parent-task + .parent-task{
+  margin-top: 24px;
+}
+.l-task-left{
+  width: 65%;
+}
+.l-task-left .task-name{
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+.l-task-right{
+  width: 35%;
+  text-align: right;
+}
+.l-task-right .task-time-past{
+  font-size: 25px;
+}
+
+.child-task{
+  margin-top: 4px;
+  margin-left: 8%;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  display: flex;
+}
+.child-task .l-task-left{
+  display: flex;
+  align-items: center;
+}
+
+.child-task .l-task-right{
+  display: flex;
+  flex-flow: column;
+  text-align: right;
+  justify-content: center;
+
+}
+.child-task .task-time{
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.child-task .task-name span,
+.child-task .task-time span{
+  font-size: 12px;
+  padding-right: 8px;
+  color: #999;
+  display: block;
+}
+.input-area{
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid;
+  border-color: rgb(158, 158, 158);
+}
+input[type="text"]{
+  color: #26a69a;
+  height: 2rem !important;
+}
+.input-header,
+.input-footer{
+  padding: 8px 16px;
+  font-size: 16px;
+  color:#fff;
+}
+.input-header{
+  background-color: #26a69a;
+}
+.input-body{
+  padding: 12px 12px;
 }
